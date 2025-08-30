@@ -1,0 +1,368 @@
+PITONE
+Pitone nasce per togliere attrito tra il pensiero e il codice. Vuole che tu possa parlare con la macchina nella lingua in cui pensi. Non è un wrapper; è un linguaggio con una voce, una filosofia, e una promessa semplice: programmare in italiano può essere chiaro, potente e bello.
+
+Prefazione del creatore
+Pitone è una dichiarazione d’intenti. È nato dal rifiuto dell’idea che la programmazione debba suonare sempre in una lingua straniera. Qui il codice non imita: parla. Parla italiano, con parole comprensibili a chiunque abbia qualcosa da costruire, spiegare, o sognare.
+
+Non è un manifesto contro altri linguaggi. È un invito: “E se togliessimo il superfluo? E se rendessimo il primo passo più umano?” Pitone è quel primo passo. E anche il secondo.
+
+Pitone si scrive con la P maiuscola quando è un nome proprio; pitone quando parli del file o del comando. Non è un acronimo. È un linguaggio.
+
+Storia e visione
+• Origine: l’idea nasce creando uno strato italiano sopra un motore affidabile. Sotto c’è Python che esegue; sopra c’è Pitone che ti ascolta.
+
+• Obiettivo: abbassare la soglia d’ingresso senza abbassare l’asticella. Semplicità all’esterno, serietà all’interno.
+
+• Principi:
+
+• Chiarezza: le parole dicono ciò che fanno.
+
+• Minimalismo: meno regole, più coerenza.
+
+• Italianità: sintassi leggibile ad alta voce.
+
+• Onestà: quando serve, puoi vedere cosa accade sotto.
+
+Iniziare con Pitone
+Requisiti
+• Runtime: Python 3 moderno.
+
+• Opzionale: prompt_toolkit per un prompt interattivo con stile.
+
+• OS: funziona su Linux, macOS e Windows; i comandi di pulizia schermo possono differire.
+
+Avvio rapido
+• Esegui l’interprete: avvia lo script principale di Pitone.
+
+• Inserisci il programma: scrivi le righe in italiano nel prompt.
+
+• Termina l’input: digita FINE su una riga nuova.
+
+• Esecuzione: Pitone traduce il tuo programma in un file Python temporaneo, lo esegue e (se scegli) lo elimina.
+
+File e modalità
+• Sorgente: salva i programmi in file con estensione .pi.
+
+• Debug: attiva una modalità che conserva il file .py generato per studio e troubleshooting.
+
+• Salvataggio: puoi scegliere se salvare il .py oppure lasciarlo effimero. Il codice sorgente resta nel tuo .pi.
+
+Sintassi del linguaggio
+Pitone privilegia parole semplici e blocchi chiari. Le strutture si aprono con la parola chiave e si chiudono con fine. L’indentazione è significativa, ma Pitone la gestisce per te quando usi le parole giuste.
+
+Istruzioni fondamentali
+• Stampa
+
+• Parola chiave: scrivi
+
+• Forma:
+
+Codice
+scrivi "Ciao mondo"
+scrivi "Ciao " + nome
+• Input utente
+
+• Forma 1: con freccia
+
+Codice
+chiedi "Come ti chiami?" → nome
+• Forma 2: assegnazione
+
+Codice
+nome = chiedi "Come ti chiami?"
+• Assegnazione
+
+• Forma:
+
+Codice
+x = 42
+messaggio = "ok"
+• Commenti
+
+• Forme:
+
+Codice
+# questo è un commento
+commento Questa riga non viene eseguita
+• Segnaposto di inizio
+
+• Parola chiave: inizio
+
+• Uso:
+
+Codice
+inizio   # opzionale, usato come intestazione leggibile
+Condizionali
+• Se / altrimenti
+
+• Forma:
+
+Codice
+se x > 10 allora
+    scrivi "grande"
+altrimenti
+    scrivi "piccolo"
+fine
+• Note: altrimenti chiude il blocco precedente e apre il ramo alternativo. fine chiude il blocco corrente.
+
+Cicli
+• Ripetizione fissa
+
+• Parola chiave: ripeti
+
+• Forma:
+
+Codice
+ripeti 3 volte
+    scrivi "ciao"
+fine
+• Mentre
+
+• Parola chiave: mentre
+
+• Forma:
+
+Codice
+mentre x < 5
+    scrivi x
+    x = x + 1
+fine
+Funzioni e ritorni
+• Definizione
+
+• Parola chiave: def
+
+• Forma:
+
+Codice
+def saluta(nome)
+    scrivi "Ciao " + nome
+fine
+• Ritorno di valori
+
+• Parola chiave: ritorna
+
+• Forma:
+
+Codice
+def somma(a, b)
+    ritorna a + b
+fine
+• Chiamata
+
+• Forma:
+
+Codice
+saluta("Matxe")
+Moduli
+• Import
+
+• Parola chiave: usa
+
+• Forma:
+
+Codice
+usa math
+scrivi math.sqrt(9)
+Regole rapide
+• Stringhe: usa doppi apici "..." per semplicità.
+
+• Espressioni: operano come in Python (+, -, *, /, ==, !=, <, >, and, or).
+
+• Blocchi: si aprono con se/ripeti/mentre/def e si chiudono con fine.
+
+• Righe libere: se una riga contiene parentesi (es. chiamate funzione), Pitone la passa così com’è al motore. Usala con coscienza.
+
+Flusso di controllo
+Se annidati e catene
+• Annidamento
+
+• Esempio:
+
+Codice
+se a > 0 allora
+    se a > 10 allora
+        scrivi "grande"
+    altrimenti
+        scrivi "medio"
+    fine
+altrimenti
+    scrivi "negativo o zero"
+fine
+• Elif
+
+• Stato: altrimenti se non è ancora sintassi nativa. Usa annidamenti o, se necessario, una riga Python pass-through come elif (avanzato).
+
+Interruzione di cicli
+• Stato: break e continue non sono parole chiave italiane dedicate. Puoi usarle come righe con parentesi solo se scritte in forma Python:
+
+Codice
+(break)   # pass-through avanzato
+Meglio strutturare i cicli per evitarne l’uso finché non esistono equivalenti nativi.
+
+Funzioni, moduli e I/O
+Pattern comuni
+• Funzione con validazione
+
+Codice
+def leggi_intero(messaggio)
+    chiedi messaggio → s
+    ritorna int(s)
+fine
+• Uso di moduli
+
+Codice
+usa random
+def dado()
+    ritorna 1 + random.randint(0, 5)
+fine
+
+scrivi dado()
+File e risorse
+• Stato: non esiste ancora una parola chiave nativa per apri/leggi/scrivi. Puoi usare il pass-through:
+
+Codice
+(with open("data.txt", "w") as f:)
+(    f.write("ciao"))
+• I/O console: scrivi e chiedi coprono il 90% dei casi interattivi.
+
+Esempi completi
+Ciao, nome
+pitone
+inizio
+chiedi "Come ti chiami?" → nome
+scrivi "Ciao " + nome
+Indovina numero
+pitone
+usa random
+segreto = 1 + random.randint(0, 9)
+
+scrivi "Indovina un numero tra 1 e 10"
+mentre True
+    chiedi "Tentativo?" → x
+    x = int(x)
+    se x == segreto allora
+        scrivi "Giusto!"
+        fine   # chiude il mentre
+    altrimenti
+        se x < segreto allora
+            scrivi "Troppo basso"
+        altrimenti
+            scrivi "Troppo alto"
+        fine
+    fine
+Tabellina
+pitone
+chiedi "Numero?" → n
+n = int(n)
+ripeti 10 volte
+    scrivi n
+    n = n + 1
+fine
+Funzione e ritorno
+pitone
+def somma(a, b)
+    ritorna a + b
+fine
+
+scrivi somma(2, 3)
+Architettura e compilazione
+Come funziona sotto il cofano
+• Sorgente .pi: scrivi il programma in italiano.
+
+• Traduzione: Pitone trasforma ogni istruzione in Python equivalente.
+
+• File temporaneo .py: viene creato per l’esecuzione.
+
+• Esecuzione: il runtime avvia il file .py.
+
+• Pulizia: a tua scelta, il .py viene eliminato. In modalità debug si conserva.
+
+Gestione dipendenze
+• Import pigri: i moduli opzionali (es. prompt_toolkit) si importano dentro funzioni, così il resto del programma funziona anche senza.
+
+• Installazione assistita: se manca un modulo, Pitone può proporre di installarlo. È comodo in sviluppo; in produzione richiedi conferma esplicita.
+
+Sicurezza del flusso
+• Chiusure: ogni blocco aperto (se/mentre/ripeti/def) deve terminare con fine.
+
+• Errori chiari: i messaggi dovrebbero indicare sempre riga e contesto. In debug mostra anche il frammento Python generato.
+
+Stile, debugging e buone pratiche
+Stile
+• Nomi parlanti: usa nomi che raccontano lo scopo (contatore, nome, totale).
+
+• Commenti utili: spiega perché, non cosa.
+
+• Blocchi brevi: funzioni corte, intenzioni chiare.
+
+Debug
+• Modalità debug: conserva il .py generato.
+
+• Tracce: stampa il codice tradotto su richiesta per linee.
+
+• Test interattivi: costruisci piccole funzioni e provale subito.
+
+Evitare insidie
+• Doppie chiamate: attenzione a non invocare due volte compilazioni o esecuzioni.
+
+• Indentazione implicita: ricorda che fine chiude l’ultimo blocco aperto.
+
+• Pass-through: usalo solo quando necessario; preserva l’italianità del codice.
+
+Community, certificazione e roadmap
+Come contribuire
+• Proposte di sintassi: discuti nuove parole chiave con esempi reali d’uso.
+
+• Libreria standard: colleziona pattern utili (leggi_file, scrivi_file, leggi_intero).
+
+• Traduzioni: pensa a dialetti o registri diversi mantenendo coerenza.
+
+Certificazione Pitone
+• Livello Base:
+
+• Obiettivi: sintassi, I/O, condizioni, cicli.
+
+• Prova: scrivere un quiz, un contatore, una funzione con ritorno.
+
+• Livello Avanzato:
+
+• Obiettivi: moduli, strutture annidate, debugging.
+
+• Prova: minigioco con salvataggio punteggio.
+
+• Livello Creatore:
+
+• Obiettivi: estendere la grammatica in modo coerente.
+
+• Prova: progettare e documentare una nuova parola chiave.
+
+Roadmap
+• altrimenti se: introdurre elif nativo.
+
+• Apri/Leggi/Scrivi: I/O di file in italiano.
+
+• Collezioni: parole chiave per liste e dizionari più leggibili.
+
+• REPL: prompt interattivo in puro Pitone.
+
+• Pacchetti: distribuire estensioni come moduli “pitonici”.
+
+Appendice: traduzioni di riferimento
+• scrivi "..." → print("...")
+
+• chiedi "..." → nome → nome = input("...")
+
+• se condizione allora ... altrimenti ... fine → if/else in Python con blocchi e due punti
+
+• ripeti N volte → for _ in range(N):
+
+• mentre condizione → while condizione:
+
+• def nome(args) → def nome(args):
+
+• ritorna valore → return valore
+
+• usa modulo → import modulo
+
+• commento / # → riga ignorata
