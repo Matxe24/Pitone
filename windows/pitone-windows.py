@@ -1,8 +1,17 @@
-#!/bin/python3
 import time as tm
 import os
 import subprocess as sub
-from prompt_toolkit import PromptSession
+try:
+    from prompt_toolkit import PromptSession
+    from prompt_toolkit.styles import Style
+except ImportError:
+    chiedi = input('Promt_toolkit is NOT installed, you want to install it?(Y/n): ')
+    if chiedi == y or chiedi == Y:
+        sub.check_call(["pip", "install", "prompt_toolkit", "--break-system-packages"])
+        from prompt_toolkit import PromptSession
+        from prompt_toolkit.styles import Style
+    else:
+        exit()
 
 def rosso(testo):
     return f"\033[91m{testo}\033[0m"
@@ -14,7 +23,7 @@ def blu(testo):
     return f"\033[94m{testo}\033[0m"
 
 def scrivi_programma(nome_programma):
-    print("✍️ Inserisci il programma Pitone (scrivi 'FINE' su una riga per terminare):\n")
+    print("✍️ Tyoe in the Pitone script (write 'FINE' or 'fine' on a line to finish the script):\n")
     session = PromptSession()
     righe = []
 
@@ -135,7 +144,7 @@ def main():
         Made by flawx
     """))
     tm.sleep(1)
-    nome_programma = input('Che nome vuoi dare al programma?: ')
+    nome_programma = input('What name do you want the script to have?: ')
     scrivi_programma(nome_programma)
 
 main()
