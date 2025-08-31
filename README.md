@@ -18,7 +18,7 @@ yay -S pitone
 on every other distro do:
 git clone https://github.com/Matxe24/Pitone && cd linux && chmod +x make.sh && ./make.sh
 
-then you can use it by just typing in: pitone"
+then you can use it by just typing in: pitone
 
 on Windows and MacOS:
 download manually the windows folder, then open the python script in it.
