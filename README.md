@@ -8,6 +8,10 @@ Join our discord: https://dsc.gg/pitone
 
 # Installation
 
+you can try Pitone directly in your browser now!!: https://pitone.onrender.com
+
+Or you can install it like this:
+
 On arch based distro do:
 yay -S pitone
 
@@ -16,8 +20,9 @@ git clone https://github.com/Matxe24/Pitone && cd linux && chmod +x make.sh && .
 
 then you can use it by just typing in: pitone"
 
-on windows:
+on Windows and MacOS:
 download manually the windows folder, then open the python script in it.
 
 # **Flawx Commitment Clause**  
 This project is maintained by Flawx with the intention of providing regular updates, improvements, and bug fixes. While no legal warranty is offered, the author commits to supporting the software to the best of their ability and ensuring a safe and evolving experience for its users.
+
