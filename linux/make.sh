@@ -1,2 +1,2 @@
-sudo mv pitone /usr/local/bin && sudo chmod +x /usr/local/bin/pitone
-echo "Ora puoi usare pitone scrivendo pitone nel terminale!"
+sudo mv pitone /usr/bin && sudo chmod +x /usr/bin/pitone
+echo "Now you can use Pitone by simply typing in 'pitone' in the terminal!"
