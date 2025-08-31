@@ -1,714 +1,259 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NextGenShop | Premium Digital Products</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        .gradient-bg {
-            background: linear-gradient(135deg, #6e8efb, #a777e3);
-        }
-        .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-        .crypto-option:hover {
-            border-color: #a777e3;
-        }
-        .crypto-selected {
-            border-color: #6e8efb;
-            background-color: rgba(110, 142, 251, 0.1);
-        }
-    </style>
-</head>
-<body class="bg-gray-50 font-sans">
-    <div id="donationModal" class=" hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 ">
-    <div class="bg-white rounded-xl shadow-2xl w-full max-w-md mx-4 p-6">
-        <div class="flex justify-between items-center mb-4">
-            <h3 class="text-2xl font-bold text-indigo-600">Support the project and hard work to keep our products cheap ❤️</h3>
-            <button onclick="closeDonationModal()" class="text-gray-500 hover:text-gray-700">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-        <p class="text-gray-600 mb-4">Se ti piace il progetto, puoi supportarlo con una donazione in crypto!</p>
-        
-        <div class="grid grid-cols-3 gap-3 text-center text-sm font-medium">
-            <div class="crypto-option border-2 rounded-lg p-3 cursor-pointer"
-                 onclick="showDonationDetails('btc')">
-                <i class="fab fa-bitcoin text-2xl text-orange-500"></i>
-                <div>BTC</div>
-            </div>
-            <div class="crypto-option border-2 rounded-lg p-3 cursor-pointer"
-                 onclick="showDonationDetails('eth')">
-                <i class="fab fa-ethereum text-2xl text-purple-600"></i>
-                <div>ETH</div>
-            </div>
-            <div class="crypto-option border-2 rounded-lg p-3 cursor-pointer"
-                 onclick="showDonationDetails('doge')">
-                <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fbrandslogos.com%2Fwp-content%2Fuploads%2Fimages%2Flarge%2Fdogecoin-logo.png&f=1&nofb=1&ipt=7422808500ec3aee836ef358811ea975e3418013925176670d38eff263c69532" class="w-6 h-6 mx-auto mb-1" />
-                <div>DOGE</div>
-            </div>
-        </div>
-
-        <div id="donationDetails" class="mt-6 hidden text-center">
-            <div class="text-xs text-gray-600 mb-1">Wallet address:</div>
-            <div class="bg-gray-100 rounded-lg p-3 font-mono text-sm flex justify-between items-center">
-                <span id="donationWallet">...</span>
-                <button onclick="copyDonationAddress()" class="text-indigo-600 hover:text-indigo-800 ml-2">
-                    <i class="fas fa-copy"></i>
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
-
-    <!-- Header -->
-    <header class="gradient-bg text-white">
-        <div class="container mx-auto px-4 py-6">
-            <div class="flex justify-between items-center">
-                <div class="flex items-center space-x-2">
-                    <i class="fas fa-bolt text-2xl"></i>
-                    <h1 class="text-2xl font-bold">NextGenShop</h1>
-                </div>
-                <nav class="hidden md:flex space-x-8">
-                    <a href="#" class="hover:text-gray-200 transition">Products</a>
-                    <a href="#" class="hover:text-gray-200 transition">Features</a>
-                    <a href="#" class="hover:text-gray-200 transition">Pricing</a>
-                    <a href="#" class="hover:text-gray-200 transition">About</a>
-                </nav>
-                <div class="flex items-center space-x-4">
-        <div class="flex items-center space-x-4">
-            <button onclick="openDonationModal()"
-            class="px-4 py-2 rounded-full bg-yellow-400 text-black font-semibold hover:bg-yellow-300 transition transform hover:scale-105 shadow-sm">
-            <i class="fas fa-heart mr-2"></i> Donate
-        </button>
-        <button class="md:hidden text-2xl">
-            <i class="fas fa-bars"></i>
-        </button>
-        </div>
-
-
-    <button class="hidden text-2xl">
-        <i class="fas fa-bars"></i>
-    </button>
-</div>
-
-            </div>
-        </div>
-
-
-
-    </header>
-
-    <!-- Hero Section -->
-    <section class="gradient-bg text-white py-16 md:py-24">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-4xl md:text-5xl font-bold mb-6">Premium Digital Products</h2>
-            <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">Discover our exclusive collection of digital assets. Pay securely with cryptocurrency.</p>
-            <button class="px-8 py-3 bg-white text-indigo-600 rounded-full font-bold hover:bg-gray-100 transition transform hover:scale-105">
-                Explore Products
-            </button>
-        </div>
-    </section>
-
-    <!-- Products Section -->
-    <section class="py-16 bg-white">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12">Featured Products</h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Product 1 -->
-                <div class="product-card bg-white rounded-xl shadow-lg overflow-hidden transition duration-300">
-                    <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" 
-                             alt="Product" class="w-full h-48 object-cover">
-                        <div class="absolute top-4 right-4 bg-indigo-500 text-white px-3 py-1 rounded-full text-xs font-bold">
-                            Popular
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center justify-between mb-2">
-                            <h3 class="text-xl font-bold">Personalized scripts</h3>
-                            <span class="text-indigo-600 font-bold">$13.50</span>
-                        </div>
-                        <p class="text-gray-600 mb-4">Any kind of script that you want. Describe what you want and we will send it to you</p>
-                        <div class="flex justify-between items-center">
-                            <div class="flex items-center text-yellow-400">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                                <span class="text-gray-600 ml-2">4.7</span>
-                            </div>
-                            <button class="px-4 py-2 bg-indigo-100 text-indigo-600 rounded-full text-sm font-medium hover:bg-indigo-200 transition"
-                                    onclick="openModal('UI Kit Pro', 54.99)">
-                                Buy Now
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 2 -->
-                <div class="product-card bg-white rounded-xl shadow-lg overflow-hidden transition duration-300">
-                    <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1541462608143-67571c6738dd?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" 
-                             alt="Product" class="w-full h-48 object-cover">
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center justify-between mb-2">
-                            <h3 class="text-xl font-bold">Complete personalized website</h3>
-                            <span class="text-indigo-600 font-bold">$90</span>
-                        </div>
-                        <p class="text-gray-600 mb-4">A whole website that you want. Completed in 1 week max.</p>
-                        <div class="flex justify-between items-center">
-                            <div class="flex items-center text-yellow-400">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <span class="text-gray-600 ml-2">4.0</span>
-                            </div>
-                            <button class="px-4 py-2 bg-indigo-100 text-indigo-600 rounded-full text-sm font-medium hover:bg-indigo-200 transition"
-                                    onclick="openModal('Web Template', 69.99)">
-                                Buy Now
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 3 -->
-                <div class="product-card bg-white rounded-xl shadow-lg overflow-hidden transition duration-300">
-                    <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1559028012-481c04fa702d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" 
-                             alt="Product" class="w-full h-48 object-cover">
-                        <div class="absolute top-4 right-4 bg-green-500 text-white px-3 py-1 rounded-full text-xs font-bold">
-                            New
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <div class="flex items-center justify-between mb-2">
-                            <h3 class="text-xl font-bold">Complete personalized application(Desktop or mobile)</h3>
-                            <span class="text-indigo-600 font-bold">$149.99</span>
-                        </div>
-                        <p class="text-gray-600 mb-4">Complete desktop or mobile application that you want. Can lead from 1 week to 1 month</p>
-                        <div class="flex justify-between items-center">
-                            <div class="flex items-center text-yellow-400">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <span class="text-gray-600 ml-2">5.0</span>
-                            </div>
-                            <button class="px-4 py-2 bg-indigo-100 text-indigo-600 rounded-full text-sm font-medium hover:bg-indigo-200 transition"
-                                    onclick="openModal('Mobile App UI', 149.99)">
-                                Buy Now
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Payment Modal -->
-    <div id="paymentModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
-        <div class="bg-white rounded-xl shadow-2xl w-full max-w-md mx-4">
-            <div class="p-6">
-                <div class="flex justify-between items-center mb-6">
-                    <h3 class="text-2xl font-bold" id="modalProductName">Product Name</h3>
-                    <button onclick="closeModal()" class="text-gray-500 hover:text-gray-700">
-                        <i class="fas fa-times"></i>
-                    </button>
-                </div>
-                
-                <div class="mb-6">
-                    <div class="flex justify-between mb-2">
-                        <span class="text-gray-600">Price:</span>
-                        <span class="font-bold" id="modalProduc tPrice">5%</span>
-                        
-                    </div>
-                    <div class="flex justify-between mb-2">
-                        <span class="text-gray-600">Tax:</span>
-                        <span class="font-bold">5%</span>
-                    </div>
-                    <div class="flex justify-between border-t border-gray-200 pt-3">
-                        <span class="text-gray-600">Total:</span>
-                        <span class="font-bold text-indigo-600 text-xl" id="modalTotalPrice">5%</span>
-                    </div>
-                </div>
-                
-                <div class="mb-6">
-                    <h4 class="font-bold mb-3">Payment Method</h4>
-                    <div class="grid grid-cols-3 gap-3">
-                        <div class="crypto-option border-2 rounded-lg p-3 text-center cursor-pointer transition"
-                             onclick="selectCrypto('btc')">
-                            <i class="fab fa-bitcoin text-2xl text-orange-500 mb-1"></i>
-                            <span class="block text-xs font-medium">Bitcoin</span>
-                        </div>
-                        <div class="crypto-option border-2 rounded-lg p-3 text-center cursor-pointer transition"
-                             onclick="selectCrypto('ltc')">
-                            <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Faltcoinsbox.com%2Fwp-content%2Fuploads%2F2022%2F12%2Flitecoin-logo.png&f=1&nofb=1&ipt=7f7255ea97138cdd02157d136a547d833ab1e542646f7a022c646ecaa83c38e9" alt="Litecoin logo" class="mx-auto mb-1 w-6 h-6">
-                            <span class="block text-xs font-medium">Litecoin</span>
-                        </div>
-                        <div class="crypto-option border-2 rounded-lg p-3 text-center cursor-pointer transition"
-                             onclick="selectCrypto('doge')">
-                             <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fbrandslogos.com%2Fwp-content%2Fuploads%2Fimages%2Flarge%2Fdogecoin-logo.png&f=1&nofb=1&ipt=7422808500ec3aee836ef358811ea975e3418013925176670d38eff263c69532" alt="Dogecoin Logo" class="mx-auto mb-1 w-6 h-6">
-                            <span class="block text-xs font-medium">Dogecoin</span>
-                        </div>
-
-                    </div>
-                </div>
-                
-                <div id="paymentDetails" class="hidden mb-6">
-                    <div class="bg-gray-50 p-4 rounded-lg">
-                        <div class="flex justify-between mb-2">
-                            <span class="text-gray-600">Amount:</span>
-                            <span class="font-bold" id="cryptoAmount">0 BTC</span>
-                        </div>
-                        <div class="mb-4 text-center">
-                            <div id="qrCode" class="mx-auto mb-3 w-32 h-32 bg-white p-2 rounded"></div>
-                            <label class="block text-gray-600 text-sm mb-1">Wallet Address:</label>
-                            <div class="flex items-center justify-center bg-gray-100 rounded-lg p-2">
-                                <span id="walletAddress" class="text-xs truncate">1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa</span>
-                                <button onclick="copyToClipboard()" class="ml-2 text-indigo-600 hover:text-indigo-800">
-                                    <i class="fas fa-copy"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="text-xs text-gray-500">
-                            <p>Send exact amount to this address. Transaction will be verified automatically.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="mb-6">
-    <label class="block text-gray-700 mb-2 font-medium">Your crypto wallet address(to verify your payment)</label>
-    <input type="address" id="paymentaddress" placeholder="0x742d35Cc6634C0532925a3b844Bc454e4438f44e"
-           class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
-           required>
-</div>
-
-                
-                <button id="payButton" onclick="processPayment()" 
-                        class="w-full py-3 bg-indigo-600 text-white rounded-lg font-bold hover:bg-indigo-700 transition disabled:opacity-50"
-                        disabled>
-                    Complete Payment
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Features Section -->
-    <section class="py-16 bg-gray-50">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12">Why Choose Us</h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-white p-6 rounded-xl shadow-md text-center">
-                    <div class="text-indigo-500 mb-4">
-                        <i class="fas fa-bolt text-4xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">Fast delivery</h3>
-                    <p class="text-gray-600">Get your digital products in less than a day(for scripts), in less than a week(for websites) or in less than a month(for applications).</p>
-                </div>
-                
-                <div class="bg-white p-6 rounded-xl shadow-md text-center">
-                    <div class="text-indigo-500 mb-4">
-                        <i class="fas fa-lock text-4xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">Secure Payments</h3>
-                    <p class="text-gray-600">Blockchain technology ensures secure and transparent transactions.</p>
-                </div>
-                
-                <div class="bg-white p-6 rounded-xl shadow-md text-center">
-                    <div class="text-indigo-500 mb-4">
-                        <i class="fas fa-headset text-4xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">24/7 Support</h3>
-                    <p class="text-gray-600">Our team is always ready to help with any questions or issues.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <div>
-                    <div class="flex items-center space-x-2 mb-4">
-                        <i class="fas fa-bolt text-2xl"></i>
-                        <h3 class="text-xl font-bold">NextGenShop</h3>
-                    </div>
-                    <p class="text-gray-400">Premium digital products for creators and developers.</p>
-                </div>
-                
-                <div>
-                    <h4 class="text-lg font-bold mb-4">Products</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-400 hover:text-white transition">UI Kits</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition">Templates</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition">Plugins</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition">Icons</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h4 class="text-lg font-bold mb-4">Company</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-400 hover:text-white transition">About</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition">Careers</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition">Blog</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition">Contact</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h4 class="text-lg font-bold mb-4">Connect</h4>
-                    <div class="flex space-x-4">
-                        <a href="#" class="text-gray-400 hover:text-white transition text-xl"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-white transition text-xl"><i class="fab fa-discord"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-white transition text-xl"><i class="fab fa-github"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-white transition text-xl"><i class="fab fa-telegram"></i></a>
-                    </div>
-                    <div class="mt-4">
-                        <p class="text-gray-400">Subscribe to our newsletter</p>
-                        <div class="flex mt-2">
-                            <input type="email" placeholder="Your email" class="px-3 py-2 bg-gray-800 text-white rounded-l focus:outline-none w-full">
-                            <button class="px-4 bg-indigo-600 text-white rounded-r hover:bg-indigo-700 transition">
-                                <i class="fas fa-paper-plane"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-                <p class="text-gray-400 mb-4 md:mb-0">© 2025 NextGenShop. All rights reserved.</p>
-                <div class="flex space-x-6">
-                    <a href="#" class="text-gray-400 hover:text-white transition">Terms</a>
-                    <a href="#" class="text-gray-400 hover:text-white transition">Privacy</a>
-                    <a href="#" class="text-gray-400 hover:text-white transition">Cookies</a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js"></script>
-    <!-- Login Modal -->
-    <div id="loginModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
-        <div class="bg-white rounded-xl shadow-2xl w-full max-w-md mx-4">
-            <div class="p-8">
-                <div class="flex justify-between items-center mb-6">
-                    <h3 class="text-2xl font-bold text-indigo-600">Welcome Back</h3>
-                    <button onclick="closeLoginModal()" class="text-gray-500 hover:text-gray-700">
-                        <i class="fas fa-times"></i>
-                    </button>
-                </div>
-                
-                <div class="mb-6">
-                    <label class="block text-gray-700 mb-2">Email</label>
-                    <input type="email" placeholder="your@email.com" 
-                           class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
-                </div>
-                
-                <div class="mb-6">
-                    <label class="block text-gray-700 mb-2">Password</label>
-                    <input type="password" placeholder="••••••••" 
-                           class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
-                </div>
-                
-                <button onclick="handleLogin()" 
-                        class="w-full py-3 bg-gradient-to-r from-indigo-500 to-purple-600 text-white rounded-lg font-bold hover:opacity-90 transition shadow-lg">
-                    Sign In
-                </button>
-                
-                <div class="mt-4 text-center">
-                    <a href="#" class="text-indigo-600 hover:text-indigo-800 text-sm">Forgot password?</a>
-                    <p class="text-gray-500 mt-3">Don't have an account? <a href="#" class="text-indigo-600 hover:text-indigo-800">Sign up</a></p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        getCryptoRates();
-
-        let cryptoRates = {
-            btc: 64000,
-            ltc: 70,
-            doge: 0.15
-        };
-
-        // Login modal functions
-        function openLoginModal() {
-            document.getElementById('loginModal').classList.remove('hidden');
-        }
-
-        function closeLoginModal() {
-            document.getElementById('loginModal').classList.add('hidden');
-        }
-
-        async function handleLogin() {
-            const email = document.querySelector('#loginModal input[type="email"]').value;
-            const password = document.querySelector('#loginModal input[type="password"]').value;
-            
-            // Simple validation
-            if (!email || !password) {
-                alert('Please fill in all fields');
-                return;
-            }
-
-            // In a real app, you would:
-            // 1. Send credentials to your backend
-            // 2. Handle authentication
-            // 3. Redirect or show success
-            
-            // Simulate API call
-            const btn = document.querySelector('#loginModal button');
-            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Signing In...';
-            btn.disabled = true;
-            
-            setTimeout(() => {
-                closeLoginModal();
-                alert('Login successful! Welcome back.');
-                // In real app: update UI to show logged in state
-            }, 1500);
-        }
-
-
-        async function getCryptoRates() {
-    try {
-        const response = await fetch(
-            'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,litecoin,dogecoin&vs_currencies=usd'
-        );
-        const data = await response.json();
-
-        cryptoRates.btc = data.bitcoin.usd;
-        cryptoRates.ltc = data.litecoin.usd;
-        cryptoRates.doge = data.dogecoin.usd;
-
-        console.log('Tassi aggiornati:', cryptoRates);
-    } catch (error) {
-        console.error('Errore nel recupero dei tassi crypto:', error);
+  <meta charset="UTF-8" />
+  <title>Pitone Web IDE</title>
+  <style>
+    body {
+      background-color: #0f0f0f;
+      color: #f0f0f0;
+      font-family: 'Fira Code', monospace;
+      margin: 0;
+      padding: 0;
     }
-}
+    header {
+      background-color: #1f1f1f;
+      padding: 1em;
+      text-align: center;
+      font-size: 1.2em;
+      color: #00ff88;
+      border-bottom: 2px solid #00ff88;
+    }
+    #editor {
+      width: 90%;
+      height: 200px;
+      margin: 2em auto;
+      background-color: #1a1a1a;
+      color: #fff;
+      border: 1px solid #444;
+      padding: 1em;
+      resize: vertical;
+    }
+    #output {
+      width: 90%;
+      margin: 1em auto;
+      background-color: #111;
+      color: #0f0;
+      border: 1px solid #333;
+      padding: 1em;
+      min-height: 100px;
+      white-space: pre-wrap;
+    }
+    button {
+      background-color: #00ff88;
+      color: #000;
+      border: none;
+      padding: 0.5em 1em;
+      margin: 0.5em;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #00cc66;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.8em;
+      color: #666;
+      margin-top: 2em;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    🐍 Pitone Web IDE v1.0 – Made by Flawx
+  </header>
 
+  <textarea id="editor" placeholder="scrivi &quot;Ciao mondo&quot;\nripeti 3 volte\n    scrivi &quot;ripetizione&quot;\nfine"></textarea>
+  <div style="text-align: center;">
+    <button onclick="compila()">Compila</button>
+    <button onclick="avvia()">Avvia</button>
+    <button onclick="resetta()">Reset</button>
+  </div>
+  <div id="output">💡 Output JavaScript apparirà qui...</div>
 
-        // Enhanced payment processing with actual transaction capability
-        async function processPayment() {
+  <footer>
+    © 2025 Pitone Project – Founder: Flawx | Discord: https://dsc.gg/pitone
+  </footer>
 
-            const modal = document.getElementById('paymentModal');
-            const payButton = document.getElementById('payButton');
-            
-            // Show processing state
-            payButton.disabled = true;
-            payButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
-            
-            try {
-                await new Promise(resolve => setTimeout(resolve, 2000));
-                
-                // Create success message
-                const successDiv = document.createElement('div');
-                successDiv.className = 'text-center py-4';
-                successDiv.innerHTML = `
-                    <div class="text-green-500 text-5xl mb-4">
-                        <i class="fas fa-check-circle"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">Payment Confirmed!</h3>
-                    <p class="text-gray-600 mb-4">${currentProduct.name} is now available in your account.</p>
-                    <div class="bg-indigo-50 p-4 rounded-lg mb-4">
-                        <p class="text-sm font-medium">Transaction ID:</p>
-                        <p class="text-xs font-mono text-indigo-600">${generateTxId(currentProduct.selectedCrypto)}</p>
-                    </div>
-                    <button onclick="closeModal()" 
-                            class="mt-2 px-6 py-2 bg-indigo-600 text-white rounded-lg font-medium hover:bg-indigo-700 transition">
-                        Download Now
-                    </button>
-                `;
-                
-                // Replace modal content
-                modal.querySelector('.p-6').innerHTML = '';
-                modal.querySelector('.p-6').appendChild(successDiv);
+  <script>
+    let codiceJS = "";
+    const dichiarate = new Set(); // traccia le variabili dichiarate
 
-            document.getElementById('paybutton').onclick = function () {
-                 monitorPayment();
-            };
-            } catch (error) {
-                payButton.innerHTML = 'Try Again';
-                payButton.disabled = false;
-                alert('Payment failed: ' + error.message);
-            }
+    function wrapStringIfNeeded(s) {
+      s = s.trim();
+      if (/^["'`].*["'`]$/.test(s)) return s; // già tra virgolette
+      return JSON.stringify(s); // wrappa come stringa JS
+    }
+
+    function compila() {
+      const input = document.getElementById("editor").value;
+      const righe = input.split("\n");
+      let out = [];
+      let indent = 0;
+
+      function indenta() {
+        return "  ".repeat(indent);
+      }
+
+      for (let raw of righe) {
+        let riga = raw.trim();
+        if (riga.length === 0) { out.push(""); continue; }
+
+        // scrivi ...
+        if (riga.startsWith("scrivi ")) {
+          const contenuto = riga.slice(7).trim();
+          out.push(indenta() + `console.log(${contenuto});`);
+          continue;
         }
-        function generateTxId(crypto) {
-            const prefixes = {
-                btc: 'btc',
-                ltc: 'ltc',
-                doge: 'doge'
-            };
-            return `${prefixes[crypto]}_${Math.random().toString(36).substring(2, 15)}${Math.random().toString(36).substring(2, 15)}`;
+
+        // chiedi "Domanda" → variabile
+        if (riga.includes("chiedi") && riga.includes("→")) {
+          let [sx, dx] = riga.split("→");
+          let domanda = sx.split("chiedi")[1].trim();
+          domanda = wrapStringIfNeeded(domanda);
+          let variabile = dx.trim();
+          if (!dichiarate.has(variabile)) {
+            dichiarate.add(variabile);
+            out.push(indenta() + `var ${variabile} = prompt(${domanda});`);
+          } else {
+            out.push(indenta() + `${variabile} = prompt(${domanda});`);
+          }
+          continue;
         }
-        // Initialize QR code when crypto is selected
-        function generateQRCode(address, crypto) {
-            const qrContainer = document.getElementById('qrCode');
-            qrContainer.innerHTML = '';
-            
-            let uri = '';
-            if (crypto === 'btc') {
-                uri = `bitcoin:${address}?amount=${currentProduct.price / cryptoRates.btc}`;
-            } else if (crypto === 'eth') {
-                uri = `ethereum:${address}?value=${currentProduct.price / cryptoRates.eth * 1e18}`;
-            } else {
-                uri = address;
-            }
-            
-            QRCode.toCanvas(qrContainer, uri, { width: 128 }, (error) => {
-                if (error) console.error(error);
-            });
+
+        // variabile = chiedi "Domanda"
+        if (riga.includes("=") && riga.includes("chiedi")) {
+          let [lhs, rhs] = riga.split("=");
+          let variabile = lhs.trim();
+          let domanda = rhs.split("chiedi")[1].trim();
+          domanda = wrapStringIfNeeded(domanda);
+          if (!dichiarate.has(variabile)) {
+            dichiarate.add(variabile);
+            out.push(indenta() + `var ${variabile} = prompt(${domanda});`);
+          } else {
+            out.push(indenta() + `${variabile} = prompt(${domanda});`);
+          }
+          continue;
         }
-        // Current product and price
-        let currentProduct = {
-            name: '',
-            price: 0,
-            selectedCrypto: null
+
+        // assegnazioni generiche: x = espressione
+        if (riga.includes("=") && !riga.includes("→")) {
+          let [lhs, rhs] = riga.split("=");
+          let variabile = lhs.trim();
+          let expr = rhs.trim();
+          if (!dichiarate.has(variabile)) {
+            dichiarate.add(variabile);
+            out.push(indenta() + `var ${variabile} = ${expr};`);
+          } else {
+            out.push(indenta() + `${variabile} = ${expr};`);
+          }
+          continue;
+        }
+
+        // se ... allora
+        if (riga.startsWith("se ") && riga.includes("allora")) {
+          const condizione = riga.slice(3).split("allora")[0].trim();
+          out.push(indenta() + `if (${condizione}) {`);
+          indent++;
+          continue;
+        }
+
+        // altrimenti
+        if (riga === "altrimenti") {
+          indent--;
+          out.push(indenta() + `} else {`);
+          indent++;
+          continue;
+        }
+
+        // fine
+        if (riga === "fine") {
+          indent = Math.max(indent - 1, 0);
+          out.push(indenta() + `}`);
+          continue;
+        }
+
+        // ripeti N volte
+        if (riga.startsWith("ripeti ") && riga.includes("volte")) {
+          const numero = riga.slice(7).split("volte")[0].trim();
+          out.push(indenta() + `for (let i = 0; i < ${numero}; i++) {`);
+          indent++;
+          continue;
+        }
+
+        // mentre condizione
+        if (riga.startsWith("mentre ")) {
+          const condizione = riga.slice(7).trim();
+          out.push(indenta() + `while (${condizione}) {`);
+          indent++;
+          continue;
+        }
+
+        // def nome  -> function nome()
+        if (riga.startsWith("def ")) {
+          const nome = riga.slice(4).trim();
+          out.push(indenta() + `function ${nome} {`);
+          indent++;
+          continue;
+        }
+
+        // ritorna valore
+        if (riga.startsWith("ritorna ")) {
+          const valore = riga.slice(8).trim();
+          out.push(indenta() + `return ${valore};`);
+          continue;
+        }
+
+        // commenti
+        if (riga.startsWith("#") || riga.startsWith("commento")) {
+          out.push(indenta() + `// ${riga}`);
+          continue;
+        }
+
+        // inizio
+        if (riga === "inizio") {
+          out.push(indenta() + `// Inizio programma Pitone`);
+          continue;
+        }
+
+        // chiamate tipo funzione() o espressioni con parentesi
+        if (riga.includes("(") && riga.includes(")")) {
+          out.push(indenta() + `${riga};`);
+          continue;
+        }
+
+        // fallback
+        out.push(indenta() + `// Comando non riconosciuto: ${riga}`);
+      }
+
+      codiceJS = out.join("\n");
+      document.getElementById("output").textContent = codiceJS;
+    }
+
+    function avvia() {
+      compila();
+      try {
+        const logs = [];
+        const originalLog = console.log;
+        console.log = function (...args) {
+          logs.push(args.map(a => String(a)).join(" "));
         };
+        // Esegui in un wrapper per evitare collisioni con lo scope globale
+        new Function(codiceJS)();
+        console.log = originalLog;
+        document.getElementById("output").textContent = logs.join("\n") || "✅ Codice eseguito senza output.";
+      } catch (err) {
+        document.getElementById("output").textContent = "❌ Errore:\n" + err;
+      }
+    }
 
-        // Crypto exchange rates (updated to current approximate values)
-        
-
-        // Wallet addresses (replace with your actual addresses)
-        const walletAddresses = {
-            btc: 'bc1qma0nnh5uc45mxvawrlp67cd27f0rzve5kkfydw',
-            ltc: 'LLqrVjd2DsT375eTAH74fa8GamCfCn4qFv',
-            doge: 'D5vjkfnDjByUWYKVqbMuQxgbCkwnDMwehw'
-        };
-
-        // Open modal with product details
-        function openModal(name, price) {
-            currentProduct.name = name;
-            currentProduct.price = price;
-            currentProduct.selectedCrypto = null;
-            
-            document.getElementById('modalProductName').textContent = name;
-            document.getElementById('modalProductPrice').textContent = `$${price.toFixed(2)}`;
-            document.getElementById('modalTotalPrice').textContent = `$${price.toFixed(2)}`;
-            
-            // Reset UI
-            document.querySelectorAll('.crypto-option').forEach(el => {
-                el.classList.remove('crypto-selected', 'border-indigo-500');
-                el.classList.add('border-gray-200');
-            });
-            
-            document.getElementById('paymentDetails').classList.add('hidden');
-            document.getElementById('payButton').disabled = true;
-            
-            document.getElementById('paymentModal').classList.remove('hidden');
-        }
-        // Close modal
-        function closeModal() {
-            document.getElementById('paymentModal').classList.add('hidden');
-        }
-
-        // Select crypto payment method
-        function selectCrypto(crypto) {
-            currentProduct.selectedCrypto = crypto;
-            
-            // Update UI
-            document.querySelectorAll('.crypto-option').forEach(el => {
-                el.classList.remove('crypto-selected', 'border-indigo-500');
-                el.classList.add('border-gray-200');
-            });
-            
-            const selectedEl = document.querySelector(`.crypto-option[onclick="selectCrypto('${crypto}')"]`);
-            selectedEl.classList.add('crypto-selected', 'border-indigo-500');
-            selectedEl.classList.remove('border-gray-200');
-            
-            // Calculate crypto amount
-            const amount = currentProduct.price / cryptoRates[crypto];
-            document.getElementById('cryptoAmount').textContent = `${amount.toFixed(8)} ${crypto.toUpperCase()}`;
-            
-            // Show wallet address and generate QR code
-            document.getElementById('walletAddress').textContent = walletAddresses[crypto];
-            generateQRCode(walletAddresses[crypto], crypto);
-            document.getElementById('paymentDetails').classList.remove('hidden');
-            
-            // Enable pay button
-            document.getElementById('payButton').disabled = false;
-        }
-
-        // Copy wallet address to clipboard
-        function copyToClipboard() {
-            const walletAddress = document.getElementById('walletAddress').textContent;
-            navigator.clipboard.writeText(walletAddress).then(() => {
-                alert('Wallet address copied to clipboard!');
-            });
-        }
-
-        // Process payment with better UX
-
-        // Close modal when clicking outside
-        document.getElementById('paymentModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeModal();
-            }
-        });
-
-        async function sendDownloadEmail(email, productName) {
-    console.log(`Sending email to ${email} with product: ${productName}`);
-    
-    // 👇 INTEGRA QUI IL TUO BACKEND (es: fetch POST verso API /send-email)
-    // return fetch('/api/send-email', {
-    //     method: 'POST',
-    //     headers: { 'Content-Type': 'application/json' },
-    //     body: JSON.stringify({ email, productName })
-    // });
-
-    // Simulazione:
-    await new Promise(resolve => setTimeout(resolve, 1000));
-}
-
-    const donationAddresses = {
-    btc: 'bc1qxy2kgdygjrsqtzq2n0yrf2493w83c7g6u9ff6u',
-    eth: '0x742d35Cc6634C0532925a3b844Bc454e4438f44e',
-    doge: 'D8vVvM5eUj8oQ7s5X2Z9wH4dR3fG6hJ7k'
-};
-
-        function openDonationModal() {
-            document.getElementById('donationModal').classList.remove('hidden');
-        }
-        function closeDonationModal() {
-            document.getElementById('donationModal').classList.add('hidden');
-        }
-        function showDonationDetails(coin) {
-        document.getElementById('donationDetails').classList.remove('hidden');
-        document.getElementById('donationWallet').textContent = donationAddresses[coin];
-
-    // Reset tutte le opzioni
-        document.querySelectorAll('#donationModal .crypto-option').forEach(el => {
-            el.classList.remove('crypto-selected', 'border-indigo-500');
-            el.classList.add('border-gray-200');
-        });
-
-    // Evidenzia quella selezionata
-        const selectedEl = document.querySelector(`#donationModal .crypto-option[onclick="showDonationDetails('${coin}')"]`);
-        selectedEl.classList.add('crypto-selected', 'border-indigo-500');
-        }
-
-        function copyDonationAddress() {
-            const text = document.getElementById('donationWallet').textContent;
-            navigator.clipboard.writeText(text).then(() => {
-                alert('Address copied!');
-            });
-        }
-
-    
-
-
-    </script>
-<p style="border-radius: 8px; text-align: center; font-size: 12px; color: #fff; margin-top: 16px;position: fixed; left: 8px; bottom: 8px; z-index: 10; background: rgba(0, 0, 0, 0.8); padding: 4px 8px;">Made by Flawx</a> - 🧬</p></body>
+    function resetta() {
+      document.getElementById("editor").value = "";
+      document.getElementById("output").textContent = "💡 Output JavaScript apparirà qui...";
+      dichiarate.clear();
+      codiceJS = "";
+    }
+  </script>
+</body>
 </html>
-
