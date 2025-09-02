@@ -47,9 +47,6 @@ def scrivi_programma(nome_programma):
     testo_completo = "\n".join(righe)
     compilatore(testo_completo, nome_programma)
 
-    #testo_completo = "\n".join(righe)
-    #compilatore(testo_completo, nome_programma)
-
 
 
 def compilatore(testo_completo, nome_programma):
