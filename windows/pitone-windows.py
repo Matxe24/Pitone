@@ -49,6 +49,8 @@ def compilatore(testo_completo, nome_programma):
 
     for riga in righe:
         riga = riga.strip()
+        if riga == "":
+            continue  # ignora righe vuote
 
         def indenta():
             return "    " * indentazione
@@ -67,16 +69,27 @@ def compilatore(testo_completo, nome_programma):
                 sinistra, destra = riga.split("=", 1)
                 variabile = sinistra.strip()
                 if "chiedi" in destra:
-                    domanda = destra.split("chiedi")[1].strip().strip('"')
+                    domanda = destra.split("chiedi", 1)[1].strip()
+                    # Rimuove eventuali virgolette esterne
+                    if domanda.startswith('"') and domanda.endswith('"'):
+                        domanda = domanda[1:-1]
                     translated.append(indenta() + f'{variabile} = input("{domanda}")')
 
-        elif "=" in riga and "→" not in riga:
+
+        elif "=" in riga and "→" not in riga and not riga.startswith("se "):
             translated.append(indenta() + riga)
+
 
         elif riga.startswith("se ") and "allora" in riga:
             condizione = riga[3:].split("allora")[0].strip()
+
+        # Se c'è un singolo = e non è già un ==
+            if "=" in condizione and "==" not in condizione:
+                condizione = condizione.replace("=", "==")
+
             translated.append(indenta() + f"if {condizione}:")
             indentazione += 1
+
 
         elif riga == "altrimenti":
             indentazione -= 1
@@ -121,6 +134,7 @@ def compilatore(testo_completo, nome_programma):
         else:
             translated.append(indenta() + f"# Comando non riconosciuto: {riga}")
 
+    translated.append('input()')
     avviatore(translated, nome_programma)
 
 def avviatore(translated, nome_programma):
