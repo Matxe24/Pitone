@@ -1,2 +1,3 @@
 sudo mv pitone /usr/bin && sudo chmod +x /usr/bin/pitone
-echo "Now you can use Pitone by simply typing in 'pitone' in the terminal!"
+sudo mv pitonec /usr/bin && sudo chmod +x /usr/bin/pitonec
+echo "Now you can use pitone or pitonec by simply typing it in the terminal!"
