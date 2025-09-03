@@ -101,19 +101,19 @@ def compilatore(testo_completo, nome_programma):
 
 def main():
     if len(sys.argv) != 2:
-        print("❌ Uso corretto: python pitonec.py nomefile.pi")
+        print("❌ Correct use: pitonec nomefile.pi")
         sys.exit(1)
 
     file_pi = sys.argv[1]
     if not file_pi.endswith(".pi"):
-        print("❌ Errore: il file deve avere estensione .pi")
+        print("❌ Error: the file needs .pi extention")
         sys.exit(1)
 
     try:
         with open(file_pi, "r", encoding="utf-8") as f:
             contenuto = f.read()
     except FileNotFoundError:
-        print(f"❌ Errore: file '{file_pi}' non trovato.")
+        print(f"❌ Error: file '{file_pi}' not found.")
         sys.exit(1)
 
     nome_output = os.path.splitext(file_pi)[0] + ".py"
@@ -122,8 +122,8 @@ def main():
     with open(nome_output, "w", encoding="utf-8") as f_out:
         f_out.write(codice_python)
 
-    print(f"✅ Compilazione completata: '{nome_output}' generato.")
-    avvia = input("Avviare?(Y/n): ")
+    print(f"✅ Compiled succesfully: '{nome_output}' generated.")
+    avvia = input("Execute?(Y/n): ")
     if avvia == "Y" or avvia == "y" or avvia == "":
         sub.run(['python3', nome_output])
     else:
