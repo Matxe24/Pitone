@@ -155,8 +155,8 @@ def main():
 ╚═╝     ╚═╝   ╚═╝    ╚═════╝ ╚═╝  ╚═══╝╚══════╝
 """))
     print(rosso(r"""
-        Made by flawx
-    """))
+        Made by flawx     i reccomend using pitonec.py
+    """)))
     tm.sleep(1)
     nome_programma = input('What name do you want the script to have?: ')
     scrivi_programma(nome_programma)
