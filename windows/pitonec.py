@@ -1,4 +1,3 @@
-#!/bin/python3
 import sys
 import os
 import subprocess as sub
@@ -101,7 +100,7 @@ def compilatore(testo_completo, nome_programma):
 
 def main():
     if len(sys.argv) != 2:
-        print("❌ Uso corretto: python pitonec.py nomefile.pi")
+        print("❌ Uso corretto: python3 pitonec.py nomefile.pi")
         sys.exit(1)
 
     file_pi = sys.argv[1]
