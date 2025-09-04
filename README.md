@@ -22,7 +22,7 @@ on other distros do this command:
 
 git clone https://github.com/Matxe24/Pitone && cd compilator && cd linux && chmod +x make.sh && ./make.sh (reccomended)
 
-or if you want the shell do: git clone https://github.com/Matxe24/Pitone && cd shell && cd linux && chmod +x make.sh &&./make.sh (not reccomended, the compilator is more stable)
+or if you want the shell do: git clone https://github.com/Matxe24/Pitone && cd shell && cd linux && chmod +x make.sh && ./make.sh (not reccomended, the compilator is more stable)
 
 On windows copy the repository, go in the folder compilator(or shell if you want the shell but it's not reccomended) then windows, then open a terminal in it and run the script.
 
