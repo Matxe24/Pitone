@@ -20,7 +20,7 @@ yay -S pitone (it installs both, the shell and the compilator)
 
 on other distros do this command:
 
-git clone https://github.com/Matxe24/Pitone && cd compilator && cd linux && chmod +x make.sh &&./make.sh (reccomended)
+git clone https://github.com/Matxe24/Pitone && cd compilator && cd linux && chmod +x make.sh && ./make.sh (reccomended)
 
 or if you want the shell do: git clone https://github.com/Matxe24/Pitone && cd shell && cd linux && chmod +x make.sh &&./make.sh (not reccomended, the compilator is more stable)
 
